@@ -291,51 +291,63 @@
   <div class="header-content">
     <div class="logo">
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- 外圈装饰光环 -->
-        <circle cx="50" cy="50" r="48" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.25"/>
-        <!-- 主红色圆 -->
-        <circle cx="50" cy="50" r="40" fill="#d32f2f"/>
-        <!-- 渐变光环 -->
-        <circle cx="50" cy="50" r="36" fill="none" stroke="#ff7043" stroke-width="1" opacity="0.6"/>
-        <!-- 金色装饰外圈 -->
-        <circle cx="50" cy="50" r="32" fill="none" stroke="#ffca28" stroke-width="1.2" opacity="0.9"/>
+        <!-- 齿轮外圈: 生成12个齿 -->
+        <defs>
+          <clipPath id="gearClip">
+            <circle cx="50" cy="50" r="44"/>
+          </clipPath>
+        </defs>
+        <!-- 齿轮齿 -->
+        <g fill="#d93025">
+          <!-- 上 -->
+          <rect x="46" y="0" width="8" height="10" rx="1"/>
+          <!-- 下 -->
+          <rect x="46" y="90" width="8" height="10" rx="1"/>
+          <!-- 左 -->
+          <rect x="0" y="46" width="10" height="8" rx="1"/>
+          <!-- 右 -->
+          <rect x="90" y="46" width="10" height="8" rx="1"/>
+          <!-- 左上 -->
+          <rect x="4" y="4" width="8" height="10" rx="1" transform="rotate(-45 8 9)"/>
+          <!-- 右上 -->
+          <rect x="88" y="4" width="8" height="10" rx="1" transform="rotate(45 92 9)"/>
+          <!-- 左下 -->
+          <rect x="4" y="86" width="8" height="10" rx="1" transform="rotate(45 8 91)"/>
+          <!-- 右下 -->
+          <rect x="88" y="86" width="8" height="10" rx="1" transform="rotate(-45 92 91)"/>
+          <!-- 上偏左 -->
+          <rect x="34" y="2" width="8" height="10" rx="1" transform="rotate(-22.5 38 7)"/>
+          <!-- 上偏右 -->
+          <rect x="58" y="2" width="8" height="10" rx="1" transform="rotate(22.5 62 7)"/>
+          <!-- 下偏左 -->
+          <rect x="34" y="88" width="8" height="10" rx="1" transform="rotate(22.5 38 93)"/>
+          <!-- 下偏右 -->
+          <rect x="58" y="88" width="8" height="10" rx="1" transform="rotate(-22.5 62 93)"/>
+        </g>
+        <!-- 红色圆形主体 -->
+        <circle cx="50" cy="50" r="40" fill="#e53935"/>
+        <!-- 内圈红色 -->
+        <circle cx="50" cy="50" r="36" fill="#d32f2f"/>
+        <!-- 装饰橙色环 -->
+        <circle cx="50" cy="50" r="34" fill="none" stroke="#ff6b35" stroke-width="1.5" opacity="0.7"/>
         
-        <!-- 顶部光芒装饰 -->
-        <path d="M50 6 L52 18 L50 15 L48 18 Z" fill="#ffca28"/>
-        <path d="M22 22 L30 28 L28 22 L32 20 Z" fill="#ffca28"/>
-        <path d="M78 22 L70 28 L72 22 L68 20 Z" fill="#ffca28"/>
-        
-        <!-- 中心齿轮/花瓣图案 -->
-        <!-- 上花瓣 -->
-        <path d="M50 22 L56 36 L50 32 L44 36 Z" fill="#ffca28"/>
-        <!-- 下花瓣 -->
-        <path d="M50 78 L56 64 L50 68 L44 64 Z" fill="#ffca28"/>
-        <!-- 左花瓣 -->
-        <path d="M22 50 L36 44 L32 50 L36 56 Z" fill="#ffca28"/>
-        <!-- 右花瓣 -->
-        <path d="M78 50 L64 44 L68 50 L64 56 Z" fill="#ffca28"/>
-        
-        <!-- 左上花瓣 -->
-        <path d="M30 30 L40 38 L36 34 L40 40 Z" fill="#ffd54f" opacity="0.9"/>
-        <!-- 右上花瓣 -->
-        <path d="M70 30 L60 38 L64 34 L60 40 Z" fill="#ffd54f" opacity="0.9"/>
-        <!-- 左下花瓣 -->
-        <path d="M30 70 L40 62 L36 66 L40 60 Z" fill="#ffd54f" opacity="0.9"/>
-        <!-- 右下花瓣 -->
-        <path d="M70 70 L60 62 L64 66 L60 60 Z" fill="#ffd54f" opacity="0.9"/>
-        
-        <!-- 中心大圆 -->
-        <circle cx="50" cy="50" r="14" fill="#ffca28"/>
-        <!-- 中心内圆 -->
-        <circle cx="50" cy="50" r="10" fill="#d32f2f"/>
-        <!-- 中心点 -->
-        <circle cx="50" cy="50" r="4" fill="#ffca28"/>
-        
+        <!-- 蓝色波浪/e形图案 -->
+        <!-- 外层e曲线 -->
+        <path d="M30 35 Q50 25 65 35 Q72 42 68 50 Q64 58 55 55 Q48 53 50 46 Q52 40 58 42" 
+              fill="none" stroke="#42a5f5" stroke-width="4" stroke-linecap="round"/>
+        <!-- 内层e曲线 -->
+        <path d="M35 48 Q45 42 55 45 Q60 47 58 52 Q56 56 50 54 Q44 52 46 48" 
+              fill="none" stroke="#64b5f6" stroke-width="3" stroke-linecap="round"/>
+        <!-- 蓝色拖尾 -->
+        <path d="M55 55 Q62 58 65 65" fill="none" stroke="#42a5f5" stroke-width="4" stroke-linecap="round"/>
+        <!-- 金色装饰弧 -->
+        <path d="M38 28 Q50 22 62 28" fill="none" stroke="#ffd54f" stroke-width="1.2" opacity="0.8"/>
+        <path d="M38 72 Q50 78 62 72" fill="none" stroke="#ffd54f" stroke-width="1.2" opacity="0.6"/>
         <!-- 小圆点装饰 -->
-        <circle cx="34" cy="34" r="1.5" fill="#ffca28"/>
-        <circle cx="66" cy="34" r="1.5" fill="#ffca28"/>
-        <circle cx="34" cy="66" r="1.5" fill="#ffca28"/>
-        <circle cx="66" cy="66" r="1.5" fill="#ffca28"/>
+        <circle cx="50" cy="22" r="2.5" fill="#ffd54f"/>
+        <circle cx="50" cy="78" r="2" fill="#ffd54f" opacity="0.8"/>
+        <circle cx="22" cy="50" r="2" fill="#ffd54f" opacity="0.8"/>
+        <circle cx="78" cy="50" r="2" fill="#ffd54f" opacity="0.8"/>
       </svg>
     </div>
     <div class="header-text">
