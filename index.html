@@ -14,52 +14,73 @@
   body {
     font-family: "Microsoft YaHei", "微软雅黑", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
     background-color: #f0f2f5;
-    color: #333;
+    color: #303133;
     min-height: 100vh;
   }
 
-  /* 顶部标题区域 */
+  /* ========== 顶部标题区域 ========== */
   .header {
-    background: linear-gradient(135deg, #1a5fa8 0%, #2b7cc7 40%, #3b94d9 70%, #4aa8e6 100%);
-    padding: 30px 0;
+    background: linear-gradient(135deg, #0e5ba4 0%, #1472c4 25%, #1e88db 50%, #29a4f0 75%, #5bbaf0 100%);
+    padding: 28px 0 32px;
     position: relative;
     overflow: hidden;
   }
 
+  /* 斜向光效层 - 模拟原图的蓝色条纹光 */
   .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    right: 10%;
+    height: 200%;
+    background: linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255,255,255,0.03) 20%,
+      rgba(255,255,255,0.08) 40%,
+      rgba(255,255,255,0.12) 50%,
+      rgba(255,255,255,0.08) 60%,
+      rgba(255,255,255,0.03) 80%,
+      transparent 100%
+    );
+    transform: rotate(-5deg);
+    pointer-events: none;
+  }
+
+  /* 顶部亮光 */
+  .header::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background-image:
-      radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%);
+    height: 40px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%);
     pointer-events: none;
   }
 
   .header-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 40px;
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 28px;
     position: relative;
     z-index: 1;
   }
 
   .logo {
-    width: 90px;
-    height: 90px;
+    width: 88px;
+    height: 88px;
     flex-shrink: 0;
   }
 
   .logo svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
   }
 
   .header-text {
@@ -67,60 +88,72 @@
   }
 
   .header-title-top {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 400;
-    letter-spacing: 4px;
-    margin-bottom: 8px;
+    letter-spacing: 5px;
+    margin-bottom: 6px;
     opacity: 0.95;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
   }
 
   .header-title-main {
-    font-size: 36px;
+    font-size: 34px;
     font-weight: 700;
-    letter-spacing: 6px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    letter-spacing: 8px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.2);
   }
 
-  /* 主体内容 */
+  /* ========== 主体内容 ========== */
   .main-container {
     max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 30px;
+    margin: 24px auto;
+    padding: 0 40px;
   }
 
-  /* 查询结果区域 */
+  /* 卡片容器 */
   .section {
     background: #fff;
-    border-radius: 4px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    margin-bottom: 24px;
+    border-radius: 2px;
+    border: 1px solid #ebeef5;
+    margin-bottom: 20px;
     overflow: hidden;
   }
 
+  /* 卡片标题 */
   .section-header {
-    padding: 20px 28px;
-    border-bottom: 1px solid #eee;
+    padding: 16px 24px;
+    border-bottom: 1px solid #ebeef5;
     display: flex;
     align-items: center;
+    background: #fafcff;
   }
 
   .section-title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: #1a5fa8;
-    padding-left: 14px;
-    border-left: 4px solid #1a5fa8;
+    padding-left: 12px;
+    border-left: 3px solid #1a5fa8;
+    line-height: 1;
   }
 
+  /* ========== 查询结果表格 ========== */
   .result-table {
     width: 100%;
     border-collapse: collapse;
   }
 
   .result-table td {
-    padding: 16px 28px;
+    padding: 14px 24px;
     font-size: 14px;
-    border-bottom: 1px solid #f0f0f0;
+    color: #303133;
+    border-bottom: 1px solid #ebeef5;
+    border-right: 1px solid #ebeef5;
+  }
+
+  .result-table td:nth-child(2),
+  .result-table td:nth-child(4) {
+    border-right: none;
   }
 
   .result-table tr:last-child td {
@@ -128,18 +161,19 @@
   }
 
   .result-table .label {
-    color: #666;
-    width: 140px;
-    background-color: #fafbfc;
+    color: #606266;
+    width: 130px;
+    background-color: #f5f7fa;
     font-weight: 500;
+    text-align: center;
   }
 
   .result-table .value {
-    color: #333;
-    flex: 1;
+    color: #303133;
+    width: calc(50% - 65px);
   }
 
-  /* 变更记录表格 */
+  /* ========== 变更记录表格 ========== */
   .change-table {
     width: 100%;
     border-collapse: collapse;
@@ -147,19 +181,19 @@
 
   .change-table th {
     background-color: #f5f7fa;
-    padding: 14px 20px;
+    padding: 12px 20px;
     font-size: 14px;
     font-weight: 600;
-    color: #333;
-    border-bottom: 2px solid #e4e7ed;
+    color: #303133;
+    border-bottom: 2px solid #dcdfe6;
     text-align: center;
   }
 
   .change-table td {
-    padding: 16px 20px;
+    padding: 14px 20px;
     font-size: 14px;
-    color: #333;
-    border-bottom: 1px solid #f0f0f0;
+    color: #303133;
+    border-bottom: 1px solid #ebeef5;
     text-align: center;
   }
 
@@ -167,26 +201,26 @@
     border-bottom: none;
   }
 
-  /* 底部区域 */
+  /* ========== 底部区域 ========== */
   .footer {
-    background: linear-gradient(180deg, #3a3f47 0%, #2d323a 100%);
-    padding: 40px 0 30px;
-    margin-top: 40px;
+    background-color: #2b2f36;
+    padding: 32px 0 28px;
+    margin-top: 30px;
   }
 
   .footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   .footer-badge {
-    width: 72px;
-    height: 72px;
-    margin-bottom: 16px;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 14px;
   }
 
   .footer-badge svg {
@@ -196,13 +230,13 @@
 
   .footer-info {
     text-align: center;
-    color: rgba(255,255,255,0.85);
+    color: #a8abb2;
     font-size: 13px;
-    line-height: 1.8;
+    line-height: 1.9;
   }
 
   .footer-info a {
-    color: rgba(255,255,255,0.85);
+    color: #a8abb2;
     text-decoration: none;
   }
 
@@ -210,36 +244,41 @@
     color: #fff;
   }
 
-  /* 响应式设计 */
+  /* ========== 响应式设计 ========== */
   @media (max-width: 768px) {
     .header-content {
       flex-direction: column;
       text-align: center;
-      gap: 16px;
+      gap: 14px;
+      padding: 0 20px;
     }
 
     .header-title-main {
-      font-size: 24px;
-      letter-spacing: 3px;
+      font-size: 22px;
+      letter-spacing: 4px;
     }
 
     .header-title-top {
-      font-size: 14px;
-      letter-spacing: 2px;
+      font-size: 13px;
+      letter-spacing: 3px;
+    }
+
+    .main-container {
+      padding: 0 16px;
     }
 
     .result-table td {
-      padding: 12px 16px;
+      padding: 10px 14px;
       font-size: 13px;
     }
 
     .result-table .label {
-      width: 110px;
+      width: 100px;
     }
 
     .change-table th,
     .change-table td {
-      padding: 12px 10px;
+      padding: 10px 8px;
       font-size: 12px;
     }
   }
@@ -247,31 +286,56 @@
 </head>
 <body>
 
-<!-- 顶部标题 -->
+<!-- ========== 顶部标题 ========== -->
 <header class="header">
   <div class="header-content">
     <div class="logo">
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- 外圈装饰 -->
-        <circle cx="50" cy="50" r="46" fill="none" stroke="#fff" stroke-width="1" opacity="0.3"/>
-        <!-- 红色圆形背景 -->
-        <circle cx="50" cy="50" r="38" fill="#d93025"/>
-        <!-- 橙色装饰环 -->
-        <circle cx="50" cy="50" r="34" fill="none" stroke="#ff6b35" stroke-width="2" opacity="0.8"/>
-        <!-- 内部图案 - 简化的政务标志 -->
-        <path d="M50 20 L62 42 L56 42 L56 34 L52 34 L52 42 L48 42 L48 34 L44 34 L44 42 L38 42 Z" fill="#ffd54f"/>
-        <path d="M50 44 L58 58 L54 58 L54 72 L46 72 L46 58 L42 58 Z" fill="#ffd54f"/>
-        <circle cx="50" cy="50" r="6" fill="#ffd54f" opacity="0.9"/>
-        <!-- 装饰星点 -->
-        <circle cx="30" cy="30" r="2" fill="#ffd54f"/>
-        <circle cx="70" cy="30" r="2" fill="#ffd54f"/>
-        <circle cx="30" cy="70" r="2" fill="#ffd54f"/>
-        <circle cx="70" cy="70" r="2" fill="#ffd54f"/>
-        <!-- 装饰弧线 -->
-        <path d="M20 50 Q35 45 35 30" fill="none" stroke="#ffd54f" stroke-width="1.5" opacity="0.7"/>
-        <path d="M80 50 Q65 55 65 70" fill="none" stroke="#ffd54f" stroke-width="1.5" opacity="0.7"/>
-        <path d="M50 80 Q45 65 30 65" fill="none" stroke="#ffd54f" stroke-width="1.5" opacity="0.7"/>
-        <path d="M50 20 Q55 35 70 35" fill="none" stroke="#ffd54f" stroke-width="1.5" opacity="0.7"/>
+        <!-- 外圈装饰光环 -->
+        <circle cx="50" cy="50" r="48" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.25"/>
+        <!-- 主红色圆 -->
+        <circle cx="50" cy="50" r="40" fill="#d32f2f"/>
+        <!-- 渐变光环 -->
+        <circle cx="50" cy="50" r="36" fill="none" stroke="#ff7043" stroke-width="1" opacity="0.6"/>
+        <!-- 金色装饰外圈 -->
+        <circle cx="50" cy="50" r="32" fill="none" stroke="#ffca28" stroke-width="1.2" opacity="0.9"/>
+        
+        <!-- 顶部光芒装饰 -->
+        <path d="M50 6 L52 18 L50 15 L48 18 Z" fill="#ffca28"/>
+        <path d="M22 22 L30 28 L28 22 L32 20 Z" fill="#ffca28"/>
+        <path d="M78 22 L70 28 L72 22 L68 20 Z" fill="#ffca28"/>
+        
+        <!-- 中心齿轮/花瓣图案 -->
+        <!-- 上花瓣 -->
+        <path d="M50 22 L56 36 L50 32 L44 36 Z" fill="#ffca28"/>
+        <!-- 下花瓣 -->
+        <path d="M50 78 L56 64 L50 68 L44 64 Z" fill="#ffca28"/>
+        <!-- 左花瓣 -->
+        <path d="M22 50 L36 44 L32 50 L36 56 Z" fill="#ffca28"/>
+        <!-- 右花瓣 -->
+        <path d="M78 50 L64 44 L68 50 L64 56 Z" fill="#ffca28"/>
+        
+        <!-- 左上花瓣 -->
+        <path d="M30 30 L40 38 L36 34 L40 40 Z" fill="#ffd54f" opacity="0.9"/>
+        <!-- 右上花瓣 -->
+        <path d="M70 30 L60 38 L64 34 L60 40 Z" fill="#ffd54f" opacity="0.9"/>
+        <!-- 左下花瓣 -->
+        <path d="M30 70 L40 62 L36 66 L40 60 Z" fill="#ffd54f" opacity="0.9"/>
+        <!-- 右下花瓣 -->
+        <path d="M70 70 L60 62 L64 66 L60 60 Z" fill="#ffd54f" opacity="0.9"/>
+        
+        <!-- 中心大圆 -->
+        <circle cx="50" cy="50" r="14" fill="#ffca28"/>
+        <!-- 中心内圆 -->
+        <circle cx="50" cy="50" r="10" fill="#d32f2f"/>
+        <!-- 中心点 -->
+        <circle cx="50" cy="50" r="4" fill="#ffca28"/>
+        
+        <!-- 小圆点装饰 -->
+        <circle cx="34" cy="34" r="1.5" fill="#ffca28"/>
+        <circle cx="66" cy="34" r="1.5" fill="#ffca28"/>
+        <circle cx="34" cy="66" r="1.5" fill="#ffca28"/>
+        <circle cx="66" cy="66" r="1.5" fill="#ffca28"/>
       </svg>
     </div>
     <div class="header-text">
@@ -281,7 +345,7 @@
   </div>
 </header>
 
-<!-- 主体内容 -->
+<!-- ========== 主体内容 ========== -->
 <main class="main-container">
 
   <!-- 查询结果 -->
@@ -350,29 +414,36 @@
 
 </main>
 
-<!-- 底部 -->
+<!-- ========== 底部 ========== -->
 <footer class="footer">
   <div class="footer-content">
     <div class="footer-badge">
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- 盾牌形状 -->
-        <path d="M50 8 L82 20 L82 50 Q82 78 50 94 Q18 78 18 50 L18 20 Z" fill="#c62828" stroke="#ffd54f" stroke-width="2"/>
-        <!-- 内部盾牌 -->
-        <path d="M50 16 L74 25 L74 50 Q74 72 50 86 Q26 72 26 50 L26 25 Z" fill="#d32f2f"/>
-        <!-- 文字装饰 -->
-        <text x="50" y="48" text-anchor="middle" fill="#ffd54f" font-size="14" font-weight="bold" font-family="serif">党政</text>
-        <text x="50" y="64" text-anchor="middle" fill="#ffd54f" font-size="14" font-weight="bold" font-family="serif">机关</text>
-        <!-- 顶部装饰 -->
-        <circle cx="50" cy="22" r="4" fill="#ffd54f"/>
-        <!-- 光芒装饰 -->
-        <path d="M50 4 L52 14 L50 12 L48 14 Z" fill="#ffd54f" opacity="0.8"/>
-        <path d="M14 28 L22 30 L20 28 L22 26 Z" fill="#ffd54f" opacity="0.8"/>
-        <path d="M86 28 L78 30 L80 28 L78 26 Z" fill="#ffd54f" opacity="0.8"/>
+        <!-- 盾牌外轮廓 -->
+        <path d="M50 6 L84 18 L84 50 Q84 80 50 96 Q16 80 16 50 L16 18 Z" fill="#b71c1c"/>
+        <!-- 盾牌内轮廓 -->
+        <path d="M50 12 L78 22 L78 50 Q78 74 50 88 Q22 74 22 50 L22 22 Z" fill="#c62828"/>
+        <!-- 金色边框 -->
+        <path d="M50 6 L84 18 L84 50 Q84 80 50 96 Q16 80 16 50 L16 18 Z" 
+              fill="none" stroke="#ffca28" stroke-width="2.5" stroke-linejoin="round"/>
+        <!-- 内部金色装饰线 -->
+        <path d="M50 14 L76 23 L76 50 Q76 72 50 85 Q24 72 24 50 L24 23 Z" 
+              fill="none" stroke="#ffca28" stroke-width="1" opacity="0.6"/>
+        <!-- 文字 -->
+        <text x="50" y="46" text-anchor="middle" fill="#ffca28" font-size="16" font-weight="bold" font-family="SimSun, serif">党政</text>
+        <text x="50" y="64" text-anchor="middle" fill="#ffca28" font-size="16" font-weight="bold" font-family="SimSun, serif">机关</text>
+        <!-- 顶部光芒 -->
+        <path d="M50 2 L53 12 L50 9 L47 12 Z" fill="#ffca28"/>
+        <path d="M12 26 L20 29 L17 26 L20 23 Z" fill="#ffca28"/>
+        <path d="M88 26 L80 29 L83 26 L80 23 Z" fill="#ffca28"/>
+        <!-- 左右装饰点 -->
+        <circle cx="8" cy="50" r="2" fill="#ffca28" opacity="0.8"/>
+        <circle cx="92" cy="50" r="2" fill="#ffca28" opacity="0.8"/>
       </svg>
     </div>
     <div class="footer-info">
       <div>主办单位：中华人民共和国工业和信息化部　地址：中国北京长安街13号　邮编：100804</div>
-      <div style="margin-top: 6px;">工业和信息化部 版权所有 <a href="#">京ICP备 0400001号</a> 网站标识码 bm07000001</div>
+      <div style="margin-top: 4px;">工业和信息化部 版权所有 <a href="#">京ICP备 0400001号</a> 网站标识码 bm07000001</div>
     </div>
   </div>
 </footer>
